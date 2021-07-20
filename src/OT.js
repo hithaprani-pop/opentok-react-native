@@ -31,17 +31,9 @@ const checkAndroidPermissions = () => new Promise((resolve, reject) => {
 const setNativeEvents = (events) => {
   const eventNames = Object.keys(events);
   OT.setNativeEvents(eventNames);
-  
-  let hasRegisteredEvents;
-  if (nativeEvents.listeners) {
-    const allEvents = nativeEvents.listeners();
-    hasRegisteredEvents = (eventType) => allEvents.includes(eventType);
-  } else {
-    hasRegisteredEvents = (eventType) => nativeEvents.listenerCount(eventType) > 0;
-  }
-
   each(events, (eventHandler, eventType) => {
-    if (!hasRegisteredEvents(eventType)) {
+    const allEvents = nativeEvents.listeners();
+    if (!allEvents.includes(eventType)) {
       nativeEvents.addListener(eventType, eventHandler);
     }
   });
@@ -50,8 +42,8 @@ const setNativeEvents = (events) => {
 const removeNativeEvents = (events) => {
   const eventNames = Object.keys(events);
   OT.removeNativeEvents(eventNames);
-  each(events, (_eventHandler, eventType) => {
-    nativeEvents.removeAllListeners(eventType);
+  each(events, (eventHandler, eventType) => {
+    nativeEvents.removeListener(eventType, eventHandler);
   });
 };
 

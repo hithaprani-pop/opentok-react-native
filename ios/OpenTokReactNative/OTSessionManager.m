@@ -31,8 +31,6 @@ RCT_EXTERN_METHOD(publish:
                   callback:(RCTResponseSenderBlock*)callback)
 RCT_EXTERN_METHOD(subscribeToStream:
                   (NSString*)streamId
-                  sessionId:
-                  (NSString*)sessionId
                   properties:(NSDictionary*)properties
                   callback:(RCTResponseSenderBlock*)callback)
 RCT_EXTERN_METHOD(removeSubscriber:
@@ -53,12 +51,6 @@ RCT_EXTERN_METHOD(subscribeToAudio:
 RCT_EXTERN_METHOD(subscribeToVideo:
                   (NSString*)streamId
                   subVideo:(BOOL)subVideo)
-RCT_EXTERN_METHOD(setPreferredResolution:
-                  (NSString*)streamId
-                  resolution:(NSDictionary*)resolution)
-RCT_EXTERN_METHOD(setPreferredFrameRate:
-                  (NSString*)streamId
-                  frameRate:(nonnull NSNumber*)frameRate)
 RCT_EXTERN_METHOD(changeCameraPosition:
                   (NSString*)publisherId
                   cameraPosition:(NSString*)cameraPosition)

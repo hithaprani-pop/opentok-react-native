@@ -98,7 +98,6 @@ class App extends Component {
       useTextureViews: true,  // Android only - default is false
       isCamera2Capable: false, // Android only - default is false
       ipWhitelist: false, // https://tokbox.com/developer/sdks/js/reference/OT.html#initSession - ipWhitelist
-      enableStereoOutput: true // Enable stereo output, default is false
     };
   }
 
